@@ -131,18 +131,22 @@
         z-index: 2;
       }
 
-      /* Biar tombol user tetap rapih di kanan atas */
+      /* Biar tombol user tetap rapih di kanan atas (dan mepet sedikit) */
       .user-profile {
         margin-top: 2px;
+        margin-right: 0px; /* memepet kanan */
+        margin-left: 6px;
+        transform-origin: top right;
       }
 
       /* KODE BARU UNTUK BRAND (LOGO DI ATAS, TEKS DI BAWAH) */
       .brand-container {
         display: flex;
         flex-direction: column; /* Mengubah susunan menjadi vertikal */
-        align-items: center; /* Teks dan logo di tengah-tengah (center) */
+        align-items: center; /* tetap center internal */
         gap: 6px; /* Jarak antara logo dan teks */
-        text-align: center;
+        text-align: left; /* biar bisa geser ke kiri */
+        margin-left: -10px; /* geser agak ke kiri (mepet kiri) */
       }
 
       .brand-logo {
@@ -181,7 +185,7 @@
         height: fit-content; /* Mencegah user-profile memanjang */
       }
       .user-profile:active {
-        transform: scale(0.92);
+        transform: scale(0.9);
       }
       .avatar {
         width: 32px; /* lebih kecil */
@@ -1085,7 +1089,7 @@
           <div class="orb orb-1"></div>
           <div class="orb orb-2"></div>
           <div class="top-bar">
-            <div class="brand-container">
+            <div class="brand-container" style="margin-right: 10px">
               <img
                 src="https://i.ibb.co.com/V0XHrjqV/logo.png"
                 alt="Logo D'Plus Store"
