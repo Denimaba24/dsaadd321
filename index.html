@@ -70,12 +70,12 @@
       /* === ANIMASI HEADER LUXURY === */
       .header-section {
         background: linear-gradient(135deg, #020617, #1e3a8a, #0ea5e9, #0f172a);
-        background-size: 400% 400%;
+        background-size: 300% 300%;
         animation: auroraBg 15s ease infinite;
         position: relative;
         overflow: hidden;
-        border-radius: 0 0 50px 50px;
-        padding: 45px 24px 110px 50px;
+        border-radius: 0 0 40px 40px;
+        padding: 45px 24px 85px 24px;
         color: white;
         box-shadow: 0 15px 35px rgba(2, 6, 23, 0.4);
       }
@@ -125,10 +125,15 @@
       .top-bar {
         display: flex;
         justify-content: space-between;
-        align-items: flex-start; /* Ubah agar user profile tetap rapi saat logo ditumpuk vertikal */
+        align-items: flex-start; /* Jaga user profile tetap rapi */
         margin-bottom: 25px;
         position: relative;
         z-index: 2;
+      }
+
+      /* Biar tombol user tetap rapih di kanan atas */
+      .user-profile {
+        margin-top: 2px;
       }
 
       /* KODE BARU UNTUK BRAND (LOGO DI ATAS, TEKS DI BAWAH) */
@@ -163,10 +168,9 @@
       .user-profile {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         background: rgba(255, 255, 255, 0.1);
-        padding: 4px 12px 4px 4px;
-        font-size: 12px;
+        padding: 4px 12px 4px 4px; /* lebih kecil */
         border-radius: 50px;
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
@@ -180,9 +184,8 @@
         transform: scale(0.92);
       }
       .avatar {
-        width: 30px;
-        height: 30px;
-        font-size: 12px;
+        width: 32px; /* lebih kecil */
+        height: 32px; /* lebih kecil */
         background: linear-gradient(135deg, var(--accent), #d97706);
         border-radius: 50%;
         display: flex;
@@ -190,7 +193,7 @@
         align-items: center;
         font-weight: bold;
         color: white;
-        box-shadow: 0 0 15px var(--accent-glow);
+        box-shadow: 0 0 12px var(--accent-glow);
       }
 
       .slogan {
@@ -224,134 +227,156 @@
       }
 
       /* === KARTU SALDO MENGKILAP BERANIMASI === */
-.balance-card {
-  background: rgba(255, 255, 255, 0.95);
-  margin: -65px 24px 24px 24px;
-  padding: 20px 24px; /* Diubah agar lebih pas */
-  border-radius: 30px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Tombol dan teks sejajar secara vertikal */
-  position: relative;
-  z-index: 10;
-  overflow: hidden;
-  border: 2px solid transparent;
-  animation: cardGlowPulse 3s infinite alternate;
-  gap: 10px; /* Memberi jarak antara saldo dan tombol */
-}
+      .balance-card {
+        background: rgba(255, 255, 255, 0.95);
+        margin: -65px 24px 24px 24px;
+        padding: 15px 15px;
+        border-radius: 28px;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 10;
+        overflow: hidden;
+        border: 2px solid transparent;
+        animation: cardGlowPulse 3s infinite alternate;
+      }
+      @keyframes cardGlowPulse {
+        0% {
+          box-shadow:
+            0 10px 30px rgba(37, 99, 235, 0.2),
+            inset 0 0 10px rgba(245, 158, 11, 0.1);
+          border-color: rgba(59, 130, 246, 0.3);
+        }
+        100% {
+          box-shadow:
+            0 15px 40px rgba(37, 99, 235, 0.5),
+            inset 0 0 20px rgba(245, 158, 11, 0.3);
+          border-color: rgba(245, 158, 11, 0.6);
+        }
+      }
+      .balance-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 1) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: skewX(-25deg);
+        animation: shinePremium 4s infinite;
+        pointer-events: none;
+        z-index: 1;
+      }
+      @keyframes shinePremium {
+        0%,
+        15% {
+          left: -150%;
+        }
+        85%,
+        100% {
+          left: 200%;
+        }
+      }
 
-/* Container untuk info saldo agar teks tidak "mendorong" tombol keluar */
-.balance-info {
-  flex: 1;
-  min-width: 0; 
-  overflow: hidden;
-}
+      .balance-info p {
+        color: var(--text-muted);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+        z-index: 2;
+      }
+      #display-balance {
+        color: var(--text-dark);
+        /* biar aman saat nominal panjang (tidak hilang digit) */
+        font-size: 26px;
+        font-weight: 900;
+        letter-spacing: -0.8px;
+        transition: var(--transition);
+        position: relative;
+        z-index: 2;
+        animation: textSparkle 2s infinite alternate;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 240px;
+      }
 
-@keyframes cardGlowPulse {
-  0% {
-    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2), inset 0 0 10px rgba(245, 158, 11, 0.1);
-    border-color: rgba(59, 130, 246, 0.3);
-  }
-  100% {
-    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.5), inset 0 0 20px rgba(245, 158, 11, 0.3);
-    border-color: rgba(245, 158, 11, 0.6);
-  }
-}
+      /* auto-kecil saat ruang sempit */
+      @media (max-width: 360px) {
+        #display-balance {
+          font-size: 22px;
+          max-width: 210px;
+        }
+      }
+      @keyframes textSparkle {
+        0% {
+          text-shadow: 0 0 0px rgba(37, 99, 235, 0);
+        }
+        100% {
+          text-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+        }
+      }
 
-.balance-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
-  transform: skewX(-25deg);
-  animation: shinePremium 4s infinite;
-  pointer-events: none;
-  z-index: 1;
-}
+      .eye-btn {
+        cursor: pointer;
+        color: var(--text-muted);
+        font-size: 16px;
+        transition: var(--transition);
+        padding: 4px;
+      }
+      .eye-btn:active {
+        transform: scale(0.8);
+        color: var(--primary-light);
+      }
 
-@keyframes shinePremium {
-  0%, 15% { left: -150%; }
-  85%, 100% { left: 200%; }
-}
-
-.balance-info p {
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 3px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  z-index: 2;
-}
-
-#display-balance {
-  color: var(--text-dark);
-  /* Menggunakan clamp agar ukuran font mengecil otomatis di HP jika angkanya panjang */
-  font-size: clamp(18px, 5.5vw, 24px); 
-  font-weight: 900;
-  letter-spacing: -1px;
-  transition: var(--transition);
-  position: relative;
-  z-index: 2;
-  white-space: nowrap;      /* Mencegah angka turun ke baris baru */
-  overflow: hidden;         /* Menyembunyikan jika terlalu panjang */
-  text-overflow: ellipsis;  /* Menambahkan ... jika saldo sangat panjang */
-  animation: textSparkle 2s infinite alternate;
-}
-
-@keyframes textSparkle {
-  0% { text-shadow: 0 0 0px rgba(37, 99, 235, 0); }
-  100% { text-shadow: 0 0 15px rgba(37, 99, 235, 0.5); }
-}
-
-.eye-btn {
-  cursor: pointer;
-  color: var(--text-muted);
-  font-size: 16px;
-  transition: var(--transition);
-  padding: 4px;
-}
-.eye-btn:active {
-  transform: scale(0.8);
-  color: var(--primary-light);
-}
-
-.btn-topup {
-  background: linear-gradient(135deg, var(--primary-light), #1e3a8a);
-  color: white;
-  border: none;
-  padding: 16px 20px; /* Disesuaikan agar lebih compact */
-  border-radius: 16px;
-  font-weight: 800;
-  font-size: 13px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  position: relative;
-  z-index: 2;
-  flex-shrink: 0; /* Mencegah tombol ikut mengecil */
-  animation: pulseBtn 2s infinite;
-}
-
-@keyframes pulseBtn {
-  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); transform: scale(1); }
-  50% { box-shadow: 0 0 0 12px rgba(37, 99, 235, 0); transform: scale(1.05); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); transform: scale(1); }
-}
-.btn-topup:active {
-  transform: scale(0.92);
-  animation: none;
-}
+      .btn-topup {
+        background: linear-gradient(135deg, var(--primary-light), #1e3a8a);
+        color: white;
+        border: none;
+        padding: 14px 22px;
+        border-radius: 20px;
+        font-weight: 800;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+        z-index: 2;
+        animation: pulseBtn 2s infinite;
+      }
+      @keyframes pulseBtn {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow: 0 0 0 12px rgba(37, 99, 235, 0);
+          transform: scale(1.05);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+          transform: scale(1);
+        }
+      }
+      .btn-topup:active {
+        transform: scale(0.92);
+        animation: none;
+      }
 
       /* === WRAPPER LAYANAN PILIHAN (ANIMASI PASTEL) === */
       .services-wrapper {
@@ -1062,7 +1087,7 @@
           <div class="top-bar">
             <div class="brand-container">
               <img
-                src="logo.png"
+                src="https://i.ibb.co.com/V0XHrjqV/logo.png"
                 alt="Logo D'Plus Store"
                 class="brand-logo"
                 onerror="
@@ -1076,10 +1101,12 @@
             </div>
 
             <div class="user-profile ripple" onclick="switchTab('profile')">
-              <div class="avatar"><i class="fas fa-user"></i></div>
+              <div class="avatar">
+                <i class="fas fa-user" style="font-size: 14px"></i>
+              </div>
               <span
                 id="header-user-text"
-                style="font-size: 14px; font-weight: 800"
+                style="font-size: 12px; font-weight: 800"
                 >Masuk Akun</span
               >
             </div>
@@ -1113,15 +1140,22 @@
           </div>
         </div>
 
-       <div class="balance-card">
-  <div class="balance-info">
-    <p>Total Saldo <i class="fas fa-eye eye-btn" id="eye-icon" onclick="toggleBalance(event)"></i></p>
-    <h3 id="display-balance">Rp 10.121.500.000</h3>
-  </div>
-  <button class="btn-topup" onclick="openTopUpModal()">
-    <i class="fas fa-plus-circle"></i> Top Up
-  </button>
-</div>
+        <div class="balance-card ripple">
+          <div class="balance-info">
+            <p>
+              Total Saldo
+              <i
+                class="fas fa-eye eye-btn"
+                id="eye-icon"
+                onclick="toggleBalance(event)"
+              ></i>
+            </p>
+            <h3 id="display-balance">Rp 10.121.500.000</h3>
+          </div>
+          <button class="btn-topup ripple" onclick="openTopUpModal()">
+            <i class="fas fa-plus-circle" style="font-size: 16px"></i> Top Up
+          </button>
+        </div>
 
         <div class="services-wrapper">
           <h3 class="section-title">Layanan Pilihan</h3>
