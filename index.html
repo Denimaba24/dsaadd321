@@ -222,143 +222,134 @@
       }
 
       /* === KARTU SALDO MENGKILAP BERANIMASI === */
-      .balance-card {
-        background: rgba(255, 255, 255, 0.95);
-        margin: -65px 24px 24px 24px;
-        padding: 26px 24px;
-        border-radius: 28px;
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        z-index: 10;
-        overflow: hidden;
-        border: 2px solid transparent;
-        animation: cardGlowPulse 3s infinite alternate;
-      }
-      @keyframes cardGlowPulse {
-        0% {
-          box-shadow:
-            0 10px 30px rgba(37, 99, 235, 0.2),
-            inset 0 0 10px rgba(245, 158, 11, 0.1);
-          border-color: rgba(59, 130, 246, 0.3);
-        }
-        100% {
-          box-shadow:
-            0 15px 40px rgba(37, 99, 235, 0.5),
-            inset 0 0 20px rgba(245, 158, 11, 0.3);
-          border-color: rgba(245, 158, 11, 0.6);
-        }
-      }
-      .balance-card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -150%;
-        width: 50%;
-        height: 100%;
-        background: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 1) 50%,
-          rgba(255, 255, 255, 0) 100%
-        );
-        transform: skewX(-25deg);
-        animation: shinePremium 4s infinite;
-        pointer-events: none;
-        z-index: 1;
-      }
-      @keyframes shinePremium {
-        0%,
-        15% {
-          left: -150%;
-        }
-        85%,
-        100% {
-          left: 200%;
-        }
-      }
+.balance-card {
+  background: rgba(255, 255, 255, 0.95);
+  margin: -65px 24px 24px 24px;
+  padding: 20px; /* Diubah agar lebih pas */
+  border-radius: 28px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Tombol dan teks sejajar secara vertikal */
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  border: 2px solid transparent;
+  animation: cardGlowPulse 3s infinite alternate;
+  gap: 15px; /* Memberi jarak antara saldo dan tombol */
+}
 
-      .balance-info p {
-        color: var(--text-muted);
-        font-size: 13px;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 6px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        position: relative;
-        z-index: 2;
-      }
-      #display-balance {
-        color: var(--text-dark);
-        font-size: 30px;
-        font-weight: 900;
-        letter-spacing: -1px;
-        transition: var(--transition);
-        position: relative;
-        z-index: 2;
-        animation: textSparkle 2s infinite alternate;
-      }
-      @keyframes textSparkle {
-        0% {
-          text-shadow: 0 0 0px rgba(37, 99, 235, 0);
-        }
-        100% {
-          text-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
-        }
-      }
+/* Container untuk info saldo agar teks tidak "mendorong" tombol keluar */
+.balance-info {
+  flex: 1;
+  min-width: 0; 
+  overflow: hidden;
+}
 
-      .eye-btn {
-        cursor: pointer;
-        color: var(--text-muted);
-        font-size: 16px;
-        transition: var(--transition);
-        padding: 4px;
-      }
-      .eye-btn:active {
-        transform: scale(0.8);
-        color: var(--primary-light);
-      }
+@keyframes cardGlowPulse {
+  0% {
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2), inset 0 0 10px rgba(245, 158, 11, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+  100% {
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.5), inset 0 0 20px rgba(245, 158, 11, 0.3);
+    border-color: rgba(245, 158, 11, 0.6);
+  }
+}
 
-      .btn-topup {
-        background: linear-gradient(135deg, var(--primary-light), #1e3a8a);
-        color: white;
-        border: none;
-        padding: 14px 22px;
-        border-radius: 20px;
-        font-weight: 800;
-        font-size: 14px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        position: relative;
-        z-index: 2;
-        animation: pulseBtn 2s infinite;
-      }
-      @keyframes pulseBtn {
-        0% {
-          box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6);
-          transform: scale(1);
-        }
-        50% {
-          box-shadow: 0 0 0 12px rgba(37, 99, 235, 0);
-          transform: scale(1.05);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
-          transform: scale(1);
-        }
-      }
-      .btn-topup:active {
-        transform: scale(0.92);
-        animation: none;
-      }
+.balance-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-25deg);
+  animation: shinePremium 4s infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes shinePremium {
+  0%, 15% { left: -150%; }
+  85%, 100% { left: 200%; }
+}
+
+.balance-info p {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+#display-balance {
+  color: var(--text-dark);
+  /* Menggunakan clamp agar ukuran font mengecil otomatis di HP jika angkanya panjang */
+  font-size: clamp(18px, 6vw, 30px); 
+  font-weight: 900;
+  letter-spacing: -1px;
+  transition: var(--transition);
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;      /* Mencegah angka turun ke baris baru */
+  overflow: hidden;         /* Menyembunyikan jika terlalu panjang */
+  text-overflow: ellipsis;  /* Menambahkan ... jika saldo sangat panjang */
+  animation: textSparkle 2s infinite alternate;
+}
+
+@keyframes textSparkle {
+  0% { text-shadow: 0 0 0px rgba(37, 99, 235, 0); }
+  100% { text-shadow: 0 0 15px rgba(37, 99, 235, 0.5); }
+}
+
+.eye-btn {
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 16px;
+  transition: var(--transition);
+  padding: 4px;
+}
+.eye-btn:active {
+  transform: scale(0.8);
+  color: var(--primary-light);
+}
+
+.btn-topup {
+  background: linear-gradient(135deg, var(--primary-light), #1e3a8a);
+  color: white;
+  border: none;
+  padding: 12px 18px; /* Disesuaikan agar lebih compact */
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0; /* Mencegah tombol ikut mengecil */
+  animation: pulseBtn 2s infinite;
+}
+
+@keyframes pulseBtn {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); transform: scale(1); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 99, 235, 0); transform: scale(1.05); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); transform: scale(1); }
+}
+.btn-topup:active {
+  transform: scale(0.92);
+  animation: none;
+}
 
       /* === WRAPPER LAYANAN PILIHAN (ANIMASI PASTEL) === */
       .services-wrapper {
@@ -1120,22 +1111,15 @@
           </div>
         </div>
 
-        <div class="balance-card ripple">
-          <div class="balance-info">
-            <p>
-              Total Saldo
-              <i
-                class="fas fa-eye eye-btn"
-                id="eye-icon"
-                onclick="toggleBalance(event)"
-              ></i>
-            </p>
-            <h3 id="display-balance">Rp 10.121.500.000</h3>
-          </div>
-          <button class="btn-topup ripple" onclick="openTopUpModal()">
-            <i class="fas fa-plus-circle" style="font-size: 16px"></i> Top Up
-          </button>
-        </div>
+       <div class="balance-card">
+  <div class="balance-info">
+    <p>Total Saldo <i class="fas fa-eye eye-btn" id="eye-icon" onclick="toggleBalance(event)"></i></p>
+    <h3 id="display-balance">Rp 10.121.500.000</h3>
+  </div>
+  <button class="btn-topup" onclick="openTopUpModal()">
+    <i class="fas fa-plus-circle"></i> Top Up
+  </button>
+</div>
 
         <div class="services-wrapper">
           <h3 class="section-title">Layanan Pilihan</h3>
