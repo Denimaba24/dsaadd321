@@ -131,10 +131,10 @@
         z-index: 2;
       }
 
-      /* Biar tombol user tetap rapih di kanan atas (dan mepet sedikit) */
+      /* Biar tombol user tetap rapih di kanan atas (lebih mepet kanan) */
       .user-profile {
-        margin-top: 2px;
-        margin-right: 0px; /* memepet kanan */
+        margin-top: 0px;
+        margin-right: -8px; /* makin mepet dinding kanan */
         margin-left: 6px;
         transform-origin: top right;
       }
@@ -172,9 +172,9 @@
       .user-profile {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         background: rgba(255, 255, 255, 0.1);
-        padding: 4px 12px 4px 4px; /* lebih kecil */
+        padding: 3px 10px 3px 3px; /* lebih kecil lagi */
         border-radius: 50px;
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
@@ -188,8 +188,9 @@
         transform: scale(0.9);
       }
       .avatar {
-        width: 32px; /* lebih kecil */
-        height: 32px; /* lebih kecil */
+        width: 28px; /* lebih kecil lagi */
+        height: 28px; /* lebih kecil lagi */
+
         background: linear-gradient(135deg, var(--accent), #d97706);
         border-radius: 50%;
         display: flex;
@@ -351,10 +352,10 @@
         background: linear-gradient(135deg, var(--primary-light), #1e3a8a);
         color: white;
         border: none;
-        padding: 14px 22px;
+        padding: 12px 18px; /* kecil */
         border-radius: 20px;
         font-weight: 800;
-        font-size: 14px;
+        font-size: 13px; /* kecil */
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -1156,8 +1157,12 @@
             </p>
             <h3 id="display-balance">Rp 10.121.500.000</h3>
           </div>
-          <button class="btn-topup ripple" onclick="openTopUpModal()">
-            <i class="fas fa-plus-circle" style="font-size: 16px"></i> Top Up
+          <button
+            class="btn-topup ripple"
+            onclick="openTopUpModal()"
+            style="padding: 12px 18px; font-size: 13px"
+          >
+            <i class="fas fa-plus-circle" style="font-size: 14px"></i> Top Up
           </button>
         </div>
 
