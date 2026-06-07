@@ -165,7 +165,8 @@
         align-items: center;
         gap: 10px;
         background: rgba(255, 255, 255, 0.1);
-        padding: 6px 16px 6px 6px;
+        padding: 4px 12px 4px 4px;
+        font-size: 12px;
         border-radius: 50px;
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
@@ -179,8 +180,9 @@
         transform: scale(0.92);
       }
       .avatar {
-        width: 36px;
-        height: 36px;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
         background: linear-gradient(135deg, var(--accent), #d97706);
         border-radius: 50%;
         display: flex;
@@ -225,7 +227,7 @@
 .balance-card {
   background: rgba(255, 255, 255, 0.95);
   margin: -65px 24px 24px 24px;
-  padding: 20px; /* Diubah agar lebih pas */
+  padding: 16 20px; /* Diubah agar lebih pas */
   border-radius: 28px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -237,7 +239,7 @@
   overflow: hidden;
   border: 2px solid transparent;
   animation: cardGlowPulse 3s infinite alternate;
-  gap: 15px; /* Memberi jarak antara saldo dan tombol */
+  gap: 10px; /* Memberi jarak antara saldo dan tombol */
 }
 
 /* Container untuk info saldo agar teks tidak "mendorong" tombol keluar */
@@ -279,11 +281,11 @@
 
 .balance-info p {
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 6px;
+  margin-bottom: 3px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -294,7 +296,7 @@
 #display-balance {
   color: var(--text-dark);
   /* Menggunakan clamp agar ukuran font mengecil otomatis di HP jika angkanya panjang */
-  font-size: clamp(18px, 6vw, 30px); 
+  font-size: clamp(16px, 5vw, 24px); 
   font-weight: 900;
   letter-spacing: -1px;
   transition: var(--transition);
@@ -327,14 +329,14 @@
   background: linear-gradient(135deg, var(--primary-light), #1e3a8a);
   color: white;
   border: none;
-  padding: 12px 18px; /* Disesuaikan agar lebih compact */
+  padding: 10px 16px; /* Disesuaikan agar lebih compact */
   border-radius: 16px;
   font-weight: 800;
-  font-size: 13px;
+  font-size: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   position: relative;
   z-index: 2;
   flex-shrink: 0; /* Mencegah tombol ikut mengecil */
