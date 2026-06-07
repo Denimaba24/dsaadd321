@@ -1974,6 +1974,7 @@
               style="font-size: 28px; color: var(--primary-light)"
             ></i>
           </div>
+
           <h3 style="font-size: 22px; font-weight: 900; margin-bottom: 10px">
             Menunggu Pembayaran
           </h3>
@@ -2346,6 +2347,227 @@
           >
             Kembali
           </button>
+        </div>
+      </div>
+
+      <div class="modal-overlay" id="modal-settings">
+        <div class="modal-content">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 24px;
+            "
+          >
+            <h3 style="font-size: 24px; font-weight: 900">Ubah PIN Keamanan</h3>
+            <i
+              class="fas fa-times"
+              style="font-size: 26px; cursor: pointer; color: var(--text-muted)"
+              onclick="closeModal('modal-settings')"
+            ></i>
+          </div>
+          <p
+            style="
+              font-size: 14px;
+              color: var(--text-muted);
+              font-weight: 600;
+              margin-bottom: 24px;
+            "
+          >
+            Pastikan PIN baru Anda mudah diingat dan jangan bagikan kepada
+            siapapun.
+          </p>
+
+          <div class="input-group">
+            <label>PIN Lama</label>
+            <input
+              type="password"
+              id="old-pin"
+              placeholder="••••••"
+              maxlength="6"
+              inputmode="numeric"
+              style="letter-spacing: 4px; font-size: 18px"
+            />
+          </div>
+          <div class="input-group">
+            <label>PIN Baru</label>
+            <input
+              type="password"
+              id="new-pin"
+              placeholder="••••••"
+              maxlength="6"
+              inputmode="numeric"
+              style="letter-spacing: 4px; font-size: 18px"
+            />
+          </div>
+          <div class="input-group" style="margin-bottom: 28px">
+            <label>Konfirmasi PIN Baru</label>
+            <input
+              type="password"
+              id="confirm-new-pin"
+              placeholder="••••••"
+              maxlength="6"
+              inputmode="numeric"
+              style="letter-spacing: 4px; font-size: 18px"
+            />
+          </div>
+
+          <button class="btn-primary ripple" onclick="changePin()">
+            <i class="fas fa-shield-alt" style="margin-right: 8px"></i> Simpan
+            Keamanan Baru
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-overlay" id="modal-help">
+        <div class="modal-content">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 24px;
+            "
+          >
+            <h3 style="font-size: 24px; font-weight: 900">Pusat Bantuan</h3>
+            <i
+              class="fas fa-times"
+              style="font-size: 26px; cursor: pointer; color: var(--text-muted)"
+              onclick="closeModal('modal-help')"
+            ></i>
+          </div>
+
+          <div style="text-align: center; margin-bottom: 28px">
+            <div
+              style="
+                width: 70px;
+                height: 70px;
+                background: #dcfce7;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto 16px auto;
+                box-shadow: 0 10px 20px rgba(5, 150, 105, 0.15);
+              "
+            >
+              <i
+                class="fas fa-headset"
+                style="font-size: 32px; color: #059669"
+              ></i>
+            </div>
+            <h4
+              style="
+                font-size: 18px;
+                font-weight: 900;
+                color: var(--text-dark);
+                margin-bottom: 8px;
+              "
+            >
+              Ada kendala transaksi?
+            </h4>
+            <p
+              style="
+                font-size: 13px;
+                color: var(--text-muted);
+                font-weight: 600;
+              "
+            >
+              Tim Customer Service kami siap membantu Anda 24/7 dengan senang
+              hati.
+            </p>
+          </div>
+
+          <div
+            class="payment-method ripple ripple-dark"
+            onclick="window.open('https://wa.me/6285750336426', '_blank')"
+            style="border-color: #25d366; background: #f0fdf4"
+          >
+            <div
+              style="
+                width: 50px;
+                height: 50px;
+                background: #25d366;
+                border-radius: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 16px;
+              "
+            >
+              <i
+                class="fab fa-whatsapp"
+                style="font-size: 24px; color: white"
+              ></i>
+            </div>
+            <div style="flex: 1">
+              <h4
+                style="
+                  font-size: 16px;
+                  font-weight: 900;
+                  color: var(--text-dark);
+                "
+              >
+                Chat WhatsApp
+              </h4>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--text-muted);
+                  font-weight: 700;
+                "
+              >
+                Balasan Instan (Prioritas)
+              </p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: var(--border)"></i>
+          </div>
+
+          <div
+            class="payment-method ripple ripple-dark"
+            onclick="window.open('mailto:support@dplusstore.com', '_blank')"
+            style="margin-bottom: 0"
+          >
+            <div
+              style="
+                width: 50px;
+                height: 50px;
+                background: #e0e7ff;
+                border-radius: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 16px;
+              "
+            >
+              <i
+                class="fas fa-envelope"
+                style="font-size: 24px; color: var(--primary-light)"
+              ></i>
+            </div>
+            <div style="flex: 1">
+              <h4
+                style="
+                  font-size: 16px;
+                  font-weight: 900;
+                  color: var(--text-dark);
+                "
+              >
+                Kirim Email
+              </h4>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--text-muted);
+                  font-weight: 700;
+                "
+              >
+                dplusstore01@gmail.com
+              </p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: var(--border)"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -3217,6 +3439,46 @@
         });
         resultsContainer.innerHTML = html;
         attachRipple();
+      }
+
+      // === FITUR UBAH PIN KEAMANAN ===
+      function changePin() {
+        const oldPin = document.getElementById("old-pin").value;
+        const newPin = document.getElementById("new-pin").value;
+        const confirmPin = document.getElementById("confirm-new-pin").value;
+
+        if (!oldPin || !newPin || !confirmPin) {
+          alert("Harap isi semua kolom PIN!");
+          return;
+        }
+
+        // Cek apakah PIN lama sesuai dengan database
+        if (oldPin !== userData.pin) {
+          alert("❌ PIN Lama yang Anda masukkan SALAH!");
+          return;
+        }
+
+        // Cek apakah PIN baru dan konfirmasi sama
+        if (newPin !== confirmPin) {
+          alert("❌ Konfirmasi PIN Baru tidak cocok!");
+          return;
+        }
+
+        // Validasi format PIN (wajib 6 angka)
+        if (newPin.length !== 6 || !/^\d+$/.test(newPin)) {
+          alert("PIN harus terdiri dari 6 digit angka!");
+          return;
+        }
+
+        // Simpan PIN baru
+        userData.pin = newPin;
+        alert("✅ PIN Keamanan Anda berhasil diperbarui!");
+
+        // Bersihkan input dan tutup modal
+        document.getElementById("old-pin").value = "";
+        document.getElementById("new-pin").value = "";
+        document.getElementById("confirm-new-pin").value = "";
+        closeModal("modal-settings");
       }
     </script>
   </body>
